@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** SYDNEY AMAYA / SECTION 001 ***
  *
  * This java file contains several simple tree problems that need to be
  * codified. These routines  must use the TreeMap and TreeSet library
@@ -19,15 +19,23 @@ public class TreeProblems {
    * elements that are in one set but not the other.
    */
   
+  /**
+   * Psuedo code: 
+   * 1.create two temp treesets 
+   * 2.use addAll to add all elements from parameters to temp sets
+   * 3.use removeAll to create a set with only elements unique to set a
+   * 4.use removalAll to create a set with only elements unique to set b 
+   * 
+   */
   public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
-
-    // INSERT CODE HERE - DO NOT FORGET TO PLACE YOUR NAME ABOVE
-    //
-    // This can be done numerous ways, but once such will only that
-    // *several* lines of code. Hint: create two temporary TreeSets and utilize the
-    // methods retainAll(), addAll(), and removeAll(). But in the end, get something to work.
-
-    return setA;
+    TreeSet<Integer> tempA = new TreeSet<>();
+    TreeSet<Integer> tempB = new TreeSet<>();
+    TreeSet<Integer> different = new TreeSet<>();
+    setA.removeAll(tempB);
+    setB.removeAll(tempA);
+    different.addAll(setA);
+    different.addAll(setB);
+    return different;
   }
 
 
@@ -38,12 +46,22 @@ public class TreeProblems {
    * remove all <key, value> pairs where the key is even. 
    */
 
+  /**
+   * Pseudo code: 
+   * 1.Traverse teeMap 
+   * 2.use an if statement to see if key value is even using if % 2 = 0
+   * 3.if true then remove key pair
+   */
+
   public static void removeEven(Map<Integer, String> treeMap) {
-
-    // INSERT CODE HERE.
-
-    return;
+    for (Map.Entry<Integer, String> entry : treeMap.entrySet()){
+      if(entry.getKey() % 2 == 0){
+        treeMap.remove(entry.getKey());
+      }
+    }
   }
+  
+  
 
 
   /**
@@ -53,11 +71,15 @@ public class TreeProblems {
    * return a boolean value indicating if the two trees are equal or not.
    */
 
+  /**
+   * Pseudo code: 
+   */
+
   public boolean treesEqual(Map<Integer, String> tree1,Map<Integer, String> tree2 ) {
+    boolean isEqual = false;
 
-    // INSERT CODE HERE
 
-    return false;
+    return isEqual;
 
   }
 
