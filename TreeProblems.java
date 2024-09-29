@@ -21,21 +21,17 @@ public class TreeProblems {
   
   /**
    * Psuedo code: 
-   * 1.create two temp treesets 
-   * 2.use addAll to add all elements from parameters to temp sets
-   * 3.use removeAll to create a set with only elements unique to set a
-   * 4.use removalAll to create a set with only elements unique to set b 
-   * 
+   * 1.
    */
   public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
-    TreeSet<Integer> tempA = new TreeSet<>();
-    TreeSet<Integer> tempB = new TreeSet<>();
-    TreeSet<Integer> different = new TreeSet<>();
-    setA.removeAll(tempB);
-    setB.removeAll(tempA);
-    different.addAll(setA);
-    different.addAll(setB);
-    return different;
+    TreeSet<Integer> temp1 new TreeSet<>();
+    TreeSet<Integere> temp2 = new TreeSet<>();
+    temp1.addAll(setA);
+    temp2.addAll(setB);
+    temp2.addAll(setA);
+    temp2.retainAll(setB);
+    temp1.removeAll(temp2);
+    return temp1;
   }
 
 
@@ -54,12 +50,15 @@ public class TreeProblems {
    */
 
   public static void removeEven(Map<Integer, String> treeMap) {
-    int key = 0;
-    for (Map.Entry<Integer, String> mapElement : treeMap.entrySet()){
-      key = (int) mapElement.getKey();
-      if (key % 2 == 0){
-        treeMap.remove(mapElement.getKey());
-      }
+   //create iterator
+    Iterator<Map.Entry<Integer, String>> iterator = treeMap.entrySet().iterator();
+   //use while loop to traverse treeMap
+    while (iterator.hasNext()){
+      Map.Entry,Integer, String> entry = iterator.next();
+      //if % 2 = 0 them key is even and must be removed
+      if(entry.getKey() % 2 == 0){
+        iterator.remove();
+     }
     }
   }
   
@@ -73,15 +72,11 @@ public class TreeProblems {
 
   /**
    * Pseudo code: 
-   * 
+   * use .equals method
    */
-
+  
   public boolean treesEqual(Map<Integer, String> tree1,Map<Integer, String> tree2 ) {
-    boolean isEqual = false;
-
-
-    return isEqual;
-
+    return tree1.equals(tree2);
   }
 
 } // end treeProblems class
