@@ -54,15 +54,15 @@ public class TreeProblems {
    */
 
   public static void removeEven(Map<Integer, String> treeMap) {
-    for (Map.Entry<Integer, String> entry : treeMap.entrySet()){
-      if(entry.getKey() % 2 == 0){
-        treeMap.remove(entry.getKey());
+    int key = 0;
+    for (Map.Entry<Integer, String> mapElement : treeMap.entrySet()){
+      key = (int) mapElement.getKey();
+      if (key % 2 == 0){
+        treeMap.remove(mapElement.getKey());
       }
     }
   }
   
-  
-
 
   /**
    * Method treesEqual()
@@ -73,6 +73,7 @@ public class TreeProblems {
 
   /**
    * Pseudo code: 
+   * 
    */
 
   public boolean treesEqual(Map<Integer, String> tree1,Map<Integer, String> tree2 ) {
