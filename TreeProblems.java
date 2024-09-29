@@ -24,10 +24,10 @@ public class TreeProblems {
    * 1.
    */
   public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
-    TreeSet<Integer> temp1 new TreeSet<>();
-    TreeSet<Integere> temp2 = new TreeSet<>();
+    TreeSet<Integer> temp1 = new TreeSet<>();
+    TreeSet<Integer> temp2 = new TreeSet<>();
     temp1.addAll(setA);
-    temp2.addAll(setB);
+    temp1.addAll(setB);
     temp2.addAll(setA);
     temp2.retainAll(setB);
     temp1.removeAll(temp2);
@@ -54,7 +54,7 @@ public class TreeProblems {
     Iterator<Map.Entry<Integer, String>> iterator = treeMap.entrySet().iterator();
    //use while loop to traverse treeMap
     while (iterator.hasNext()){
-      Map.Entry,Integer, String> entry = iterator.next();
+      Map.Entry<Integer, String> entry = iterator.next();
       //if % 2 = 0 them key is even and must be removed
       if(entry.getKey() % 2 == 0){
         iterator.remove();
