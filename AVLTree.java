@@ -1,6 +1,6 @@
 
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** SYDNEY AMAYA / SECTION 001 ***
  *
  * This java file is a Java object implementing simple AVL Tree.
  * You are to complete the deleteElement method.
@@ -361,7 +361,19 @@ class LUC_AVLTree {
          * code for each. You can also look at the method InsertElement, as it has do
          * do many of the same things as this method.
          */
-
+        //checkk if node passed as a param if null if so return null
+        if (node == null){
+            return null;
+        }
+        //check if we need to traverse the left or right chuld, if so recursively call 
+        //deleteElement() along proper subtree
+        deleteElement(value, node.leftChild);
+        deleteElement(value, node.rightChild);
+        //if no-sub children, return null
+        if (node.rightChild == null && node.leftChild == null){
+            return null;
+        }
+        //if only one subtree, assign appropiate subtree to this node (aka, move subtree up)
         return node;
     }
 

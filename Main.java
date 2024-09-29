@@ -1,4 +1,4 @@
-
+added if statements 
 /**********************************************************
  *
  * Homework # 3 (Programming Assignment). This assignment has two parts, the first
