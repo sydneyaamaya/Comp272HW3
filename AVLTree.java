@@ -368,61 +368,58 @@ class LUC_AVLTree {
         //check if we need to traverse the left or right child, if so recursively call
         //if value is less than node.value traverse left sub tree, if more than traverse right
         //deleteElement() along proper subtree
-        if (value < node.value){
-            deleteElement(value, node.leftChild);
-            deleteElement(value, node.rightChild);
+        if(value < node.value){
+            node.leftChild = deleteElement(value, node.leftChild);
         }
-        if (value > node.value){
-            deleteElement(value, node.rightChild);
-            deleteElement(value, node.leftChild);
+        else if (value > node.value){
+            node.rightChild = deleteElement(value, node.rightChild);
         }
-        //if value not found, simply return node
-        if (node.value != value){
-            return node;
-        }
-        //if value found, and no sub-children return null to delete null
-        if((node.value == value) && (node.leftChild == null && node.rightChild == null)){
-            return null;
-        }
-        //if only one subtree, assign appropiate subtree to this node (aka, move subtree up)
-        //if left subtree needs to move up set node's left child to it's left child's child
-        if(node.leftChild != null && node.rightChild == null){
-            node.leftChild = node.leftChild.leftChild;
-        }
-        //if right subtree needs to move up set node's right child to its's right child's child
-        if(node.rightChild != null && node.leftChild == null){
+        //if we get here then the node to delete was found, now we have deleting code and checks
+        else {
+            //if value found, and no sub-children return null to delete null
+            if((node.value == value) && (node.leftChild == null && node.rightChild == null)){
+                return null;
+            }
+            //if only one subtree, assign appropiate subtree to this node (aka, move subtree up)
+            //if left subtree needs to move up set node's left child to it's left child's child
+            if(node.leftChild != null && node.rightChild == null){
+                node.leftChild = node.leftChild.leftChild;
+            }
+            //if right subtree needs to move up set node's right child to its's right child's child
+            if(node.rightChild != null && node.leftChild == null){
             node.rightChild = node.rightChild.rightChild;
-        }
-        //if left and right subtree
-        if(node.leftChild != null && node.rightChild != null){
+            }
+            //if left and right subtree
+            if(node.leftChild != null && node.rightChild != null){
             //find in order successor node
             Node successor = minValueNode(node);
             //copy in order successor node's value to this node's value
             node.value = successor.value;
             //delete the in-roder succcessor node 
             deleteElement(successor.value, successor);
-        }
-        //Tree has been manipulated 
-        //recalculate node's height 
-        int height = getHeight(node);
-        //recalcuate node's bf via getBalance()
-        int bf = getBalanceFactor(node);
-        //if this node's bf > 1, then rotation neede for this node 
-        if(Math.abs(bf) > 1){
+            }
+            //Tree has been manipulated 
+            //recalculate node's height 
+            int height = getHeight(node);
+            //recalcuate node's bf via getBalance()
+            int bf = getBalanceFactor(node);
+            //if this node's bf > 1, then rotation neede for this node 
+            if(Math.abs(bf) > 1){
             //invoke LL, LR, RR, or RL rotation 
             //if bf > 1 left heavy and if bf < 1 right heavy
-            if(bf > 0 ){
+            if(bf > 0 && node.leftChild.leftChild != null){
                 LLRotation(node);
             }
-            else {
+            else if ( bf > 0 && node.leftChild.rightChild != null){
                 LRRotation(node);
             }
-            if(bf < 0){
+            else if(bf < 0 && node.rightChild.rightChild != null){
                 RRRotation(node);
             }
-            else {
+            else if (bf < 0 && node.rightChild.leftChild != null){
                 RLRotation(node);
             }
+          }
         }
         return node;
     }
